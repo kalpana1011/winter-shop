@@ -1,0 +1,125 @@
+@use "variables" as *;
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  background-color: $footer-bg;
+  color: black;
+
+  section {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    h2,
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: darkblue;
+      text-decoration: none;
+      font-weight: 400;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: black;
+    }
+
+    .ri-visa-line {
+      font-size: 3rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .ri-paypal-fill {
+      font-size: 2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      .social-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #f0f0f0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+}
+
+// Responsive Styles for Footer
+
+// Responsive 768px
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2 5rem 1 5rem;
+
+    section {
+      flex: 1 1 100%; // full width
+      width: 100%; // ensure the width is 100%
+      max-width: 500px; // tablet width larget than mobile
+      text-align: center;
+      align-items: center;
+
+      h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.75rem;
+      }
+
+      a {
+        font-size: 1rem;
+        padding: 0.25rem 0;
+      }
+
+      p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      .ri-visa-line {
+        font-size: 1.85rem;
+      }
+
+      .social-icons {
+        justify-content: center;
+        gap: 1.25rem;
+        margin-top: 1.5rem;
+      }
+      // border divider between sections
+      &:not(:last-child) {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}

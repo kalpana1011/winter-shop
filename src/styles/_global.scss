@@ -1,0 +1,27 @@
+@use "variables" as *;
+
+body {
+  font-family: $font-family;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: $text-color;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.body-container {
+  padding-top: 90px; // Adjust this value based on the header height
+}
