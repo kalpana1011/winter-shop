@@ -8,9 +8,7 @@ import type { CartItem } from "../models/cart.types";
 let selectedVariant: Variant | null = null;
 let product: Product;
 export function initProductDetails(): void {
-  console.log("Product Details initialized");
   const productId = getProductIdFromURL();
-  console.log("Product ID from URL:", productId);
   if (productId) {
     product = PRODUCT_LIST.find((p) => p.id === productId) as Product;
     if (product) {
@@ -24,18 +22,15 @@ export function initProductDetails(): void {
   }
 }
 
-
 function getProductIdFromURL(): string | null {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
 }
 
 function displayProductDetails(product: Product): void {
-  console.log("Found product:", product);
   const productDetailsContainer = document.getElementById(
-    "product-details-container"
+    "product-details-container",
   );
-  console.log("Selected variant:", selectedVariant);
   if (productDetailsContainer) {
     productDetailsContainer.innerHTML = `
           <div class="product-details-grid">
@@ -123,17 +118,17 @@ function displayProductDetails(product: Product): void {
            </div>
        </div>
             `;
-   const addToCartBtn = document.getElementById("add-to-cart-button");
-   if (addToCartBtn) {
+    const addToCartBtn = document.getElementById("add-to-cart-button");
+    if (addToCartBtn) {
       addToCartBtn.addEventListener("click", () => {
-      addToCart();
-      showSnackbar();
-    });
+        addToCart();
+        showSnackbar();
+      });
+    }
   }
- }
 }
 
-let snackbarTimeout:any; 
+let snackbarTimeout: any;
 
 function showSnackbar() {
   const snackbar = document.getElementById("snackbar");
@@ -141,7 +136,7 @@ function showSnackbar() {
     return;
   }
   clearTimeout(snackbarTimeout);
-  
+
   snackbar!.className = "show";
 
   snackbarTimeout = setTimeout(() => {
@@ -150,7 +145,6 @@ function showSnackbar() {
 }
 
 function handleSelectColor(colorValue: string, colorImage: string): void {
-  console.log("Selected color:", colorValue);
   if (!selectedVariant) {
     console.error("No variant selected");
     return;
@@ -165,7 +159,6 @@ function handleSelectColor(colorValue: string, colorImage: string): void {
 (window as any).handleSelectColor = handleSelectColor;
 
 function handleSelectSize(sizeValue: string): void {
-  console.log("Selected size:", sizeValue);
   if (!selectedVariant) {
     console.error("No variant selected");
     return;
@@ -186,23 +179,21 @@ function getPriceForVariant(): number | null {
   const matchedVariant = product.variants?.find(
     (variant) =>
       variant.color === selectedVariant?.color &&
-      variant.size === selectedVariant?.size
+      variant.size === selectedVariant?.size,
   );
 
   if (matchedVariant) {
-    console.log("Match found:", matchedVariant);
     selectedVariant = {
       ...selectedVariant,
       price: matchedVariant.price,
     } as Variant;
   } else {
-    console.log("No matching variant found");
     selectedVariant = {
       ...selectedVariant,
       price: null,
     } as Variant;
   }
-  
+
   return selectedVariant.price;
 }
 
@@ -218,13 +209,9 @@ function addToCart(): void {
     name: `${product.name} (${selectedVariant.color}, ${selectedVariant.size})`,
     price: selectedVariant.price!,
     quantity: 1,
-    image: selectedVariant.images![0]
+    image: selectedVariant.images![0],
   };
 
   addCartService(item);
   renderCartCount();
-  console.log("Added to cart:", item); 
 }
-
-
-

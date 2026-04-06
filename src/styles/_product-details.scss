@@ -239,15 +239,28 @@
 }
 
 @media (max-width: 480px) {
-  .product-details-container
-    .product-details-grid
-    .color-options-container
-    .title {
-    padding: 0 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  .product-details-container {
+    .product-details-grid {
+      .right-container {
+        width: 100%;
+
+        .variant-selection-container {
+          .color-options-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+
+            .title {
+              padding: 0 2px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

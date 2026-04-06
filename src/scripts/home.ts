@@ -8,11 +8,10 @@ export const initHome = () => {
     // injected HTML before we try to find the element
     setTimeout(() => {
       const targetElement = document.getElementById(hash.substring(1));
-      console.log("Scrolling to section:", hash, targetElement);
       if (targetElement) {
         targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
+          behavior: "smooth",
+          block: "start",
         });
       }
     }, 100);

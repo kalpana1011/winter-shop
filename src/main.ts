@@ -18,7 +18,7 @@ type PageKey =
   | "cart"
   | "header"
   | "footer"
-  |"success"
+  | "success";
 
 const headerContainer = document.getElementById("main-header") as HTMLElement;
 const footerContainer = document.getElementById("main-footer") as HTMLElement;
@@ -35,27 +35,22 @@ const routes: Record<string, () => void> = {
   "/success": renderSuccess,
 };
 
-
 // it load the respective script file after loading its corresponding html file
 export const scriptForPages: Record<string, () => void> = {
-  "header": initHeader,
-  "home": initHome,
+  header: initHeader,
+  home: initHome,
   "product-details": initProductDetails,
-  "cart": initCart,
-  "checkout": initCheckout,
+  cart: initCart,
+  checkout: initCheckout,
 };
-
-
 
 async function renderHeader(): Promise<void> {
   await loadPage("header", headerContainer);
 }
 
-
 async function renderFooter(): Promise<void> {
   await loadPage("footer", footerContainer);
 }
-
 
 async function renderHome(): Promise<void> {
   await loadPage("home", appContainer);
@@ -71,11 +66,9 @@ async function renderCart(): Promise<void> {
 
 async function renderCheckout(): Promise<void> {
   await loadPage("checkout", appContainer);
-
 }
-async function renderSuccess():Promise<void>{
-
-  await loadPage("success",appContainer);
+async function renderSuccess(): Promise<void> {
+  await loadPage("success", appContainer);
 }
 
 async function router(): Promise<void> {
@@ -90,7 +83,7 @@ async function router(): Promise<void> {
 // loadPage include 3 stage fetch / inject as html text/ run script for pages
 async function loadPage(
   page: PageKey,
-  containerToLoadInto: HTMLElement
+  containerToLoadInto: HTMLElement,
 ): Promise<void> {
   let htmlData = "";
   try {
@@ -115,7 +108,6 @@ async function loadPage(
 // INITIALIZE APP
 async function init(): Promise<void> {
   console.log("App initialized");
-  console.log("Product interface:", PRODUCT_LIST);
   await renderHeader();
   renderCartCount();
   await router();
