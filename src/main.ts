@@ -1,4 +1,3 @@
-import { PRODUCT_LIST } from "./data/productList";
 import { initHome } from "./scripts/home";
 import { initProductDetails } from "./scripts/productDetails";
 import { initCart } from "./scripts/initCart";
